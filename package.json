@@ -1,0 +1,11 @@
+{
+  "name": "dev-challenge-classpp-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/leo-pro/dev-challenge-classpp-nodejs.git",
+  "author": "Leonardo Alves(leo-pro) <leoroberto.alves@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "csvtojson": "^2.0.10"
+  }
+}
