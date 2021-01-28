@@ -14,6 +14,8 @@ Passo a passo para instalar e executar o projeto:
 
 * [Node](https://nodejs.org/en/)
 * [CSVtoJson](https://www.npmjs.com/package/csvtojson)
+* [lodash](https://lodash.com/);
+* [google-libphonenumber](https://www.npmjs.com/package/google-libphonenumber)
 
 ## Autores
 
