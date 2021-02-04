@@ -10,6 +10,7 @@ fs.createReadStream(fileInput)
   .pipe(csv({
     headers: ['fullname','eid','email Student','phone Student','email Pedagogical Responsible','phone Pedagogical Responsible','email Financial Responsible','phone Financial Responsible','group1','group2','invisible','see_all']
   }))
+  .on('error', (err) =>{ console.log(`CSV couldn't convert to JSON file! Check the Errors ${err}`)})
   .on('data', (data) => {
     results.push({
         fullname: data['fullname'],
@@ -83,5 +84,5 @@ fs.createReadStream(fileInput)
   )
   .on('end', () => {
     fs.writeFileSync(outputPath, JSON.stringify(results.slice(1)));
-    console.log(results.slice(1));
+    console.log("Success! CSV converted to JSON. Check the output.json");
   });
