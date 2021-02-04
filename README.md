@@ -13,7 +13,7 @@ Passo a passo para instalar e executar o projeto:
 ## Tecnologias usadas / Referências
 
 * [Node](https://nodejs.org/en/)
-* [CSVtoJson](https://www.npmjs.com/package/csvtojson)
+* [lodash](https://www.npmjs.com/package/lodash)
 
 ## Autores
 
