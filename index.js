@@ -7,9 +7,9 @@ const outputPath = 'output.json';
 const results = [];
 
 fs.createReadStream(fileInput)
-  .pipe(csv(
-    ['fullname','eid','email Student','phone Student','email Pedagogical Responsible','phone Pedagogical Responsible','email Financial Responsible','phone Financial Responsible','group1','group2','invisible','see_all']
-  ))
+  .pipe(csv({
+    headers: ['fullname','eid','email Student','phone Student','email Pedagogical Responsible','phone Pedagogical Responsible','email Financial Responsible','phone Financial Responsible','group1','group2','invisible','see_all']
+  }))
   .on('data', (data) => {
     results.push({
         fullname: data['fullname'],
@@ -27,7 +27,54 @@ fs.createReadStream(fileInput)
             address: [
               ...data['email Student'].split(/,|\//g)
             ],
-          }
+          },
+          {
+            type: "phone",
+            tags: [
+              "Student"
+            ],
+            address: [
+              data['phone Student'].replace(/[A-Z]|[a-z]/g,'')
+            ],
+          },
+          {
+            type: "email",
+            tags: [
+              "Pedagogical",
+              "Responsible"
+            ],
+            address: [
+              data['email Responsible Pedagogical']
+            ],
+          },
+          {
+            type: "phone",
+            tags: [
+              "Pedagogical",
+              "Responsible"
+            ],
+            address: [
+              data['phone Pedagogical Responsible']
+            ],
+          },
+          {
+            type: "email",
+            tags: [
+              "Financial"
+            ],
+            address: [
+              data['email Financial Responsible']
+            ],
+          },
+          {
+            type: "phone",
+            tags: [
+              "Financial",
+            ],
+            address: [
+              data['phone Financial Responsible']
+            ],
+          },
         ],
         invisible: !data['invisible'] ? false : data['invisible'] == 'no'? false: true,
         see_all: !data['see_all'] ? false : data['see_all'] === 'yes'? true : false
